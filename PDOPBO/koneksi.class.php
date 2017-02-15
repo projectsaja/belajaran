@@ -1,11 +1,11 @@
-<?php 
+<?php
 
-
-class database {
+class Database {
     private static $dbName = 'itats' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
     private static $dbUserPassword = '';
+     
     private static $cont  = null;
      
     public function __construct() {
@@ -16,14 +16,14 @@ class database {
     {
        // One connection through whole application
        if ( null == self::$cont )
-       {    
+       {     
         try
         {
-          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
+          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword); 
         }
         catch(PDOException $e)
         {
-          die($e->getMessage());
+          die($e->getMessage()); 
         }
        }
        return self::$cont;
@@ -34,5 +34,3 @@ class database {
         self::$cont = null;
     }
 }
-
-?>
