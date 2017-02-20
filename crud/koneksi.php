@@ -1,11 +1,27 @@
 <?php 
+/*$host     = "localhost";
+$dbname   = "itats2";
+$user     = "bagos97";
+$password = "bagosep97";
 
+try {
 
-class database {
-    private static $dbName = 'itats' ;
+	$DBH = new PDO ("mysql:host=$host;dbname=$dbname", $user, $password);
+
+	if ($DBH){
+		echo "Konek Sukses";
+	}
+}
+catch (PDOException $STH){
+	echo"<br>".$STH->getMessage();
+}*/
+
+class Database {
+    private static $dbName = 'itats2' ;
     private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = '';
+    private static $dbUsername = 'bagos97';
+    private static $dbUserPassword = 'bagosep97';
+    private static $DBH = null;
     private static $cont  = null;
      
     public function __construct() {
@@ -20,6 +36,9 @@ class database {
         try
         {
           self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
+          if (self::$cont){
+				echo "Konek Sukses";
+			}
         }
         catch(PDOException $e)
         {
